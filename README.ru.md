@@ -79,6 +79,11 @@ console.log(mp.logLines); // [{ level: "info", msg: "ada joined" }]
 
 ## Документация
 
+Полный сайт документации — на
+**[<https://waveluv.github.io/redspacem/>](https://waveluv.github.io/redspacem/)**
+(сайт на Vocs: тёмная тема, поиск, сайдбар на английском и русском).
+Markdown-исходники лежат в `docs/` как источник истины:
+
 - [Начало работы](./docs/getting-started.ru.md) — установка, настройка, первый ресурс
 - [Архитектура](./docs/architecture.ru.md) — слои SDK и связь с Rust-ядром
 - [Справочник API](./docs/api.ru.md) — типы и сигнатуры функций по пакетам

@@ -1,7 +1,16 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.5.8/schema.json",
   "files": {
-    "includes": ["**", "!node_modules", "!**/dist", "!examples/freeroam/server/dist", "!.git"]
+    "includes": [
+      "**",
+      "!node_modules",
+      "!site/node_modules",
+      "!site/.vocs",
+      "!site/src/pages.gen.ts",
+      "!**/dist",
+      "!examples/freeroam/server/dist",
+      "!.git"
+    ]
   },
   "formatter": {
     "lineWidth": 100,

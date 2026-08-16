@@ -1,0 +1,112 @@
+---
+title: RedSpaceM SDK
+description: Build multiplayer gamemodes for Cyberpunk 2077 servers.
+layout: blank
+showAskAi: false
+showBanner: false
+showFeedback: false
+---
+
+import { Card, Cards, Link } from "vocs";
+
+<div className="vocs:mx-auto vocs:flex vocs:w-full vocs:max-w-[900px] vocs:flex-col vocs:px-8 vocs:pt-20 vocs:pb-16 vocs:max-[700px]:px-5">
+  <div className="vocs:mb-6 vocs:flex vocs:items-center vocs:justify-center">
+    <img src="/logo.svg" alt="RedSpaceM" className="vocs:h-16 vocs:w-16" />
+  </div>
+
+  <h1 className="vocs:m-0 vocs:mb-4 vocs:text-center vocs:text-[clamp(40px,5.6vw,64px)] vocs:font-semibold vocs:leading-[1] vocs:tracking-[-0.025em] vocs:text-heading">
+    {"RedSpaceM SDK"}
+  </h1>
+
+  <p className="vocs:mx-auto vocs:m-0 vocs:mb-8 vocs:max-w-[640px] vocs:text-center vocs:text-xl vocs:leading-[1.6] vocs:text-secondary">
+    {"The official TypeScript SDK for RedSpaceM — build multiplayer gamemodes for Cyberpunk 2077 roleplay servers with a typed "}
+    <code>{"mp.*"}</code>
+    {" API."}
+  </p>
+
+  <div className="vocs:mb-10 vocs:flex vocs:flex-wrap vocs:justify-center vocs:gap-3">
+    <Link
+      to="/getting-started"
+      className="vocs:inline-flex vocs:min-h-12 vocs:items-center vocs:justify-center vocs:gap-2.5 vocs:rounded-[var(--vocs-radius-lg)] vocs:border vocs:border-solid vocs:border-accent vocs:bg-accent vocs:px-[22px] vocs:text-[15px] vocs:font-medium vocs:text-accentInvert vocs:no-underline vocs:transition-opacity vocs:duration-100 vocs:hover:opacity-90"
+    >
+      {"Get started"}
+    </Link>
+    <a
+      href="https://github.com/waveluv/redspacem"
+      className="vocs:inline-flex vocs:min-h-12 vocs:items-center vocs:justify-center vocs:gap-2.5 vocs:rounded-[var(--vocs-radius-lg)] vocs:border vocs:border-solid vocs:border-primary vocs:bg-surface vocs:px-[22px] vocs:text-[15px] vocs:font-medium vocs:text-heading vocs:no-underline vocs:transition-colors vocs:duration-100 vocs:hover:border-secondary vocs:hover:bg-surfaceTint"
+    >
+      {"GitHub"}
+    </a>
+  </div>
+</div>
+
+<div className="vocs:mx-auto vocs:w-full vocs:max-w-[900px] vocs:px-8 vocs:pb-24 vocs:max-[700px]:px-5">
+  <h2 id="what-is-redspacem-sdk">What is RedSpaceM SDK?</h2>
+
+  The official TypeScript SDK for RedSpaceM — a FiveM-inspired platform for
+  Cyberpunk 2077 roleplay servers. A high-performance **Rust core** (closed
+  source, ships separately) injects a typed `mp.*` scripting API into your
+  resources. This repository contains everything you need on the TypeScript
+  side:
+
+  - **6 dependency-free packages** published to npm (ESM + type declarations)
+  - **Bun workspaces** — develop, lint, build and test with one runtime
+  - **Mocks built in** — unit-test gamemodes before the server core ships
+
+  ```sh
+  bun add @redspacem/server-types @redspacem/rpc @redspacem/di
+  ```
+
+  A minimal resource:
+
+  ```ts
+  import type { Mp } from "@redspacem/server-types";
+  import { createContainer } from "@redspacem/di";
+
+  export function main(mp: Mp): void {
+    const container = createContainer();
+    container.registerValue("mp", mp);
+
+    mp.events.on("playerJoin", (player) => {
+      mp.log("info", `${player.name} (id=${player.id}) joined`);
+    });
+
+    mp.commands.register("hello", (player, args) => {
+      mp.log("info", `Hello, ${player.name}!`);
+    });
+  }
+  ```
+
+  <Cards>
+    <Card
+      title="Getting Started"
+      description="Install the SDK and write your first resource."
+      icon="book-open"
+      to="/getting-started"
+    />
+    <Card
+      title="Architecture"
+      description="How the SDK layers map to the Rust core."
+      icon="layers"
+      to="/architecture"
+    />
+    <Card
+      title="API Reference"
+      description="Types and signatures for every package."
+      icon="code"
+      to="/api"
+    />
+    <Card
+      title="Contributing"
+      description="Build, test and publish the packages."
+      icon="git-commit"
+      to="/contributing"
+    />
+    <Card
+      title="Roadmap"
+      description="Where the platform is heading."
+      icon="map"
+      to="/roadmap"
+    />
+  </Cards>
+</div>

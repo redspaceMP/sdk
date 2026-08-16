@@ -3,6 +3,10 @@ dist/
 out/
 *.tsbuildinfo
 
+# Vocs docs site artifacts
+.vocs/
+site/src/pages.gen.ts
+
 .env
 .env.local
 .env.*.local

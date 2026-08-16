@@ -1,0 +1,26 @@
+{
+  "name": "redspacem-docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "RedSpaceM SDK documentation site, powered by Vocs.",
+  "scripts": {
+    "dev": "vocs dev",
+    "build": "vocs build",
+    "preview": "vocs preview"
+  },
+  "dependencies": {
+    "react": "^19",
+    "react-dom": "^19",
+    "vocs": "^2.8.5",
+    "waku": "^1.0.0-beta.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6",
+    "typescript": "^5",
+    "vite": "^8"
+  }
+}
