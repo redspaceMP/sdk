@@ -29,4 +29,4 @@ const msg = await api.call(client, "greet", { name: "red" });
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/waveluv/redspacem).
+MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/redspaceMP/sdk).

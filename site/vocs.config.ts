@@ -3,13 +3,12 @@ import { defineConfig } from "vocs/config";
 export default defineConfig({
   title: "RedSpaceM SDK",
   description: "Build multiplayer gamemodes for Cyberpunk 2077 servers.",
-  basePath: "/redspacem",
-  baseUrl: "https://waveluv.github.io",
+  baseUrl: "https://redspace.online",
   renderStrategy: "full-static",
   colorScheme: "dark",
   logoUrl: "/logo.svg",
   iconUrl: "/logo.svg",
-  socials: [{ icon: "github", link: "https://github.com/waveluv/redspacem" }],
+  socials: [{ icon: "github", link: "https://github.com/redspaceMP/sdk" }],
   topNav: [
     { text: "Getting Started", link: "/getting-started" },
     { text: "Architecture", link: "/architecture" },
@@ -18,7 +17,7 @@ export default defineConfig({
     { text: "Roadmap", link: "/roadmap" },
     {
       text: "GitHub",
-      link: "https://github.com/waveluv/redspacem",
+      link: "https://github.com/redspaceMP/sdk",
       external: true,
     },
   ],

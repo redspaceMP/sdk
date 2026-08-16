@@ -92,7 +92,7 @@ bun build server/src/index.ts --target=bun --format=esm --outfile=server/dist/in
 
 ## Пример
 
-Полный рабочий пример — [`examples/freeroam`](https://github.com/waveluv/redspacem/tree/main/examples/freeroam) в этом
+Полный рабочий пример — [`examples/freeroam`](https://github.com/redspaceMP/sdk/tree/main/examples/freeroam) в этом
 репозитории: он является членом Bun workspace и проверяется в CI
 (`bun run build`, `bun run typecheck`).
 

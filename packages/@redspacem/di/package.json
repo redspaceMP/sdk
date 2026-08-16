@@ -15,11 +15,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waveluv/redspacem.git"
+    "url": "git+https://github.com/redspaceMP/sdk.git"
   },
-  "homepage": "https://github.com/waveluv/redspacem#readme",
+  "homepage": "https://github.com/redspaceMP/sdk#readme",
   "bugs": {
-    "url": "https://github.com/waveluv/redspacem/issues"
+    "url": "https://github.com/redspaceMP/sdk/issues"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

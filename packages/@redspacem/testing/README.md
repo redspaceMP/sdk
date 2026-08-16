@@ -33,4 +33,4 @@ const sum = await client.call<number>("add", { a: 2, b: 3 });
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/waveluv/redspacem).
+MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/redspaceMP/sdk).

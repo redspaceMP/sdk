@@ -35,4 +35,4 @@ mp.commands.register("goto", (player, args) => {
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/waveluv/redspacem).
+MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/redspaceMP/sdk).

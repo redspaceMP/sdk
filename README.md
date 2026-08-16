@@ -79,7 +79,7 @@ Try the full example resource in [`examples/freeroam`](./examples/freeroam).
 ## Documentation
 
 The full documentation site lives at
-**[<https://waveluv.github.io/redspacem/>](https://waveluv.github.io/redspacem/)**
+**[<https://redspace.online/>](https://redspace.online/)**
 — a Vocs-powered site (dark theme, search, English + Russian sidebar).
 Markdown sources stay in `docs/` as the source of truth:
 

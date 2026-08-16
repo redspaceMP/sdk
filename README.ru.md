@@ -80,7 +80,7 @@ console.log(mp.logLines); // [{ level: "info", msg: "ada joined" }]
 ## Документация
 
 Полный сайт документации — на
-**[<https://waveluv.github.io/redspacem/>](https://waveluv.github.io/redspacem/)**
+**[<https://redspace.online/>](https://redspace.online/)**
 (сайт на Vocs: тёмная тема, поиск, сайдбар на английском и русском).
 Markdown-исходники лежат в `docs/` как источник истины:
 
