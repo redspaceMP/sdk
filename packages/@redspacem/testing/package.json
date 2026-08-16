@@ -1,0 +1,50 @@
+{
+  "name": "@redspacem/testing",
+  "version": "0.1.0",
+  "description": "Testing helpers for RedSpaceM resources: createMockMp for a mock mp.* host and createMemoryTransport for in-memory RPC.",
+  "license": "MIT",
+  "author": "RedSpaceM contributors",
+  "type": "module",
+  "keywords": [
+    "redspacem",
+    "cyberpunk-2077",
+    "multiplayer",
+    "testing",
+    "mock",
+    "rpc"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waveluv/redspacem.git"
+  },
+  "homepage": "https://github.com/waveluv/redspacem#readme",
+  "bugs": {
+    "url": "https://github.com/waveluv/redspacem/issues"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@redspacem/rpc": "^0.1.0",
+    "@redspacem/server-types": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^7.0.2"
+  }
+}

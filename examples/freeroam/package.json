@@ -1,0 +1,17 @@
+{
+  "name": "redspacem-example-freeroam",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "bun build server/src/index.ts --target=bun --format=esm --outfile=server/dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@redspacem/server-types": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^7.0.2"
+  }
+}

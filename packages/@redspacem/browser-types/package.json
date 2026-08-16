@@ -1,0 +1,46 @@
+{
+  "name": "@redspacem/browser-types",
+  "version": "0.1.0",
+  "description": "CEF/NUI-style UI bridge types for RedSpaceM: typed event channel between game scripts and browser surfaces, plus createBrowserBridge.",
+  "license": "MIT",
+  "author": "RedSpaceM contributors",
+  "type": "module",
+  "keywords": [
+    "redspacem",
+    "cyberpunk-2077",
+    "multiplayer",
+    "cef",
+    "nui",
+    "ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waveluv/redspacem.git"
+  },
+  "homepage": "https://github.com/waveluv/redspacem#readme",
+  "bugs": {
+    "url": "https://github.com/waveluv/redspacem/issues"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^7.0.2"
+  }
+}

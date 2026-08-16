@@ -1,0 +1,11 @@
+name = "freeroam"
+version = "0.1.0"
+author = "redspacem"
+description = "Freeroam gamemode for RedSpaceM"
+
+[server]
+source = "server/src/index.ts"
+entry = "server/dist/index.js"
+
+[dependencies]
+core = ">=0.1.0"

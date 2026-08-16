@@ -1,0 +1,46 @@
+{
+  "name": "@redspacem/di",
+  "version": "0.1.0",
+  "description": "A tiny dependency-injection container for RedSpaceM resources: register, registerValue, resolve and has with lazy singletons.",
+  "license": "MIT",
+  "author": "RedSpaceM contributors",
+  "type": "module",
+  "keywords": [
+    "redspacem",
+    "cyberpunk-2077",
+    "multiplayer",
+    "di",
+    "dependency-injection",
+    "container"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waveluv/redspacem.git"
+  },
+  "homepage": "https://github.com/waveluv/redspacem#readme",
+  "bugs": {
+    "url": "https://github.com/waveluv/redspacem/issues"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^7.0.2"
+  }
+}
