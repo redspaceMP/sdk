@@ -1,6 +1,6 @@
 {
   "name": "@redspacem/di",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A tiny dependency-injection container for RedSpaceM resources: register, registerValue, resolve and has with lazy singletons.",
   "license": "MIT",
   "author": "RedSpaceM contributors",

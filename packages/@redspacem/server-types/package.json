@@ -1,6 +1,6 @@
 {
   "name": "@redspacem/server-types",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Typed contract for the mp.* scripting host API injected by the RedSpaceM server core (Mp, MpPlayer, MpVector3, MpVehicle, events, commands).",
   "license": "MIT",
   "author": "RedSpaceM contributors",
