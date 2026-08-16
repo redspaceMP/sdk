@@ -6,7 +6,10 @@
       "!node_modules",
       "!site/node_modules",
       "!site/.vocs",
+      "!site/.cache",
       "!site/src/pages.gen.ts",
+      "!site/public/search-index.json",
+      "!site/public/search-index.min.json",
       "!**/dist",
       "!examples/freeroam/server/dist",
       "!.git"

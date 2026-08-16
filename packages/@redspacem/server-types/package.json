@@ -1,6 +1,6 @@
 {
   "name": "@redspacem/server-types",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Typed contract for the mp.* scripting host API injected by the RedSpaceM server core (Mp, MpPlayer, MpVector3, MpVehicle, events, commands).",
   "license": "MIT",
   "author": "RedSpaceM contributors",
@@ -15,9 +15,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/redspaceMP/sdk.git"
+    "url": "git+https://github.com/redspaceMP/sdk.git",
+    "directory": "packages/@redspacem/server-types"
   },
-  "homepage": "https://github.com/redspaceMP/sdk#readme",
+  "homepage": "https://www.npmjs.com/package/@redspacem/server-types",
   "bugs": {
     "url": "https://github.com/redspaceMP/sdk/issues"
   },
@@ -42,5 +43,9 @@
   "devDependencies": {
     "@types/bun": "latest",
     "typescript": "^7.0.2"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
   }
 }

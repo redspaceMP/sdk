@@ -37,6 +37,33 @@ jobs:
       - name: Test
         run: bun test
 
+  docs:
+    name: Docs site (Vocs) + repo tools
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install
+        run: bun install
+
+      - name: Biome check
+        run: bun run lint
+
+      - name: Test tools
+        run: bun test tools/
+
+      - name: Build docs site (AI search index + Vocs)
+        working-directory: site
+        run: bun install && bun run build
+
+      - name: Verify search index artifact
+        working-directory: site
+        run: test -f dist/public/search-index.json && test -s dist/public/search-index.json
+
   publish:
     name: Publish to npm
     if: startsWith(github.ref, 'refs/tags/v')

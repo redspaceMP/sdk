@@ -11,6 +11,8 @@ resources; this repository contains everything you need on the TypeScript side.
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 ![Bun](https://img.shields.io/badge/runtime-Bun%201.3+-black?logo=bun)
+![Docs](https://img.shields.io/badge/docs-redspace.online-blue?logo=readthedocs)
+![GitHub](https://img.shields.io/badge/github-redspaceMP%2Fsdk-2da44e?logo=github)
 
 </div>
 
@@ -80,8 +82,8 @@ Try the full example resource in [`examples/freeroam`](./examples/freeroam).
 
 The full documentation site lives at
 **[<https://redspace.online/>](https://redspace.online/)**
-— a Vocs-powered site (dark theme, search, English + Russian sidebar).
-Markdown sources stay in `docs/` as the source of truth:
+— a Vocs-powered site (dark theme, English + Russian sidebar). Markdown sources
+stay in `docs/` as the source of truth:
 
 - [Getting started](./docs/getting-started.md) — install, setup, first resource
 - [Architecture](./docs/architecture.md) — SDK layering and how it maps to the Rust core
@@ -89,6 +91,20 @@ Markdown sources stay in `docs/` as the source of truth:
 - [Contributing](./docs/contributing.md) — build, test, publish
 - [Roadmap](./docs/roadmap.md) — where the platform is heading
 - [Русская документация](./README.ru.md) — README на русском
+
+### Documentation & AI search
+
+The docs site ships with built-in **RAG search** and **Ask AI**:
+
+- Press **Ctrl+K** (or use the floating search button) to open AI search. Queries
+  are embedded at build time with a local transformer model
+  (`all-MiniLM-L6-v2`, ONNX) and matched by cosine similarity over precomputed
+  embeddings — plus a keyword fallback when the embedding model is unavailable.
+- **Ask AI** answers questions with citations: paste your own Anthropic / OpenAI /
+  DeepSeek API key (stored in `localStorage`, sent only to the provider), and the
+  site retrieves the top matching doc chunks and streams a cited answer.
+- The index (`search-index.json`) is generated at build time by
+  `bun run index:search` in `site/`; it is never committed to the repository.
 
 ---
 

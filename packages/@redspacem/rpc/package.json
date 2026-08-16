@@ -1,6 +1,6 @@
 {
   "name": "@redspacem/rpc",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Dependency-free, type-safe RPC layer for RedSpaceM resources: RpcServer, RpcClient, TypedRpc and a JSON transport contract.",
   "license": "MIT",
   "author": "RedSpaceM contributors",
@@ -14,9 +14,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/redspaceMP/sdk.git"
+    "url": "git+https://github.com/redspaceMP/sdk.git",
+    "directory": "packages/@redspacem/rpc"
   },
-  "homepage": "https://github.com/redspaceMP/sdk#readme",
+  "homepage": "https://www.npmjs.com/package/@redspacem/rpc",
   "bugs": {
     "url": "https://github.com/redspaceMP/sdk/issues"
   },
@@ -41,5 +42,9 @@
   "devDependencies": {
     "@types/bun": "latest",
     "typescript": "^7.0.2"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
   }
 }

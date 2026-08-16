@@ -1,6 +1,6 @@
 {
   "name": "@redspacem/di",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A tiny dependency-injection container for RedSpaceM resources: register, registerValue, resolve and has with lazy singletons.",
   "license": "MIT",
   "author": "RedSpaceM contributors",
@@ -15,9 +15,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/redspaceMP/sdk.git"
+    "url": "git+https://github.com/redspaceMP/sdk.git",
+    "directory": "packages/@redspacem/di"
   },
-  "homepage": "https://github.com/redspaceMP/sdk#readme",
+  "homepage": "https://www.npmjs.com/package/@redspacem/di",
   "bugs": {
     "url": "https://github.com/redspaceMP/sdk/issues"
   },
@@ -42,5 +43,9 @@
   "devDependencies": {
     "@types/bun": "latest",
     "typescript": "^7.0.2"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
   }
 }

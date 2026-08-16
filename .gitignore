@@ -7,6 +7,10 @@ out/
 .vocs/
 site/src/pages.gen.ts
 
+# Generated at build time by `bun run index:search`
+site/public/search-index.json
+site/.cache/
+
 .env
 .env.local
 .env.*.local

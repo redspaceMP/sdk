@@ -1,6 +1,6 @@
 {
   "name": "@redspacem/testing",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Testing helpers for RedSpaceM resources: createMockMp for a mock mp.* host and createMemoryTransport for in-memory RPC.",
   "license": "MIT",
   "author": "RedSpaceM contributors",
@@ -15,9 +15,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/redspaceMP/sdk.git"
+    "url": "git+https://github.com/redspaceMP/sdk.git",
+    "directory": "packages/@redspacem/testing"
   },
-  "homepage": "https://github.com/redspaceMP/sdk#readme",
+  "homepage": "https://www.npmjs.com/package/@redspacem/testing",
   "bugs": {
     "url": "https://github.com/redspaceMP/sdk/issues"
   },
@@ -40,11 +41,15 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@redspacem/rpc": "^0.1.1",
-    "@redspacem/server-types": "^0.1.1"
+    "@redspacem/rpc": "^0.1.2",
+    "@redspacem/server-types": "^0.1.2"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "typescript": "^7.0.2"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
   }
 }

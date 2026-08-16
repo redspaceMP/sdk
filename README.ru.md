@@ -12,6 +12,8 @@ RP-серверов Cyberpunk 2077 в духе FiveM. Высокопроизво
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 ![Bun](https://img.shields.io/badge/runtime-Bun%201.3+-black?logo=bun)
+![Docs](https://img.shields.io/badge/docs-redspace.online-blue?logo=readthedocs)
+![GitHub](https://img.shields.io/badge/github-redspaceMP%2Fsdk-2da44e?logo=github)
 
 </div>
 
@@ -81,7 +83,7 @@ console.log(mp.logLines); // [{ level: "info", msg: "ada joined" }]
 
 Полный сайт документации — на
 **[<https://redspace.online/>](https://redspace.online/)**
-(сайт на Vocs: тёмная тема, поиск, сайдбар на английском и русском).
+(сайт на Vocs: тёмная тема, сайдбар на английском и русском).
 Markdown-исходники лежат в `docs/` как источник истины:
 
 - [Начало работы](./docs/getting-started.ru.md) — установка, настройка, первый ресурс
@@ -90,6 +92,20 @@ Markdown-исходники лежат в `docs/` как источник ист
 - [Участие в разработке](./docs/contributing.ru.md) — сборка, тесты, публикация
 - [Дорожная карта](./docs/roadmap.ru.md) — куда движется платформа
 - [English README](./README.md) — README на английском
+
+### Документация и AI-поиск
+
+На сайте документации есть встроенные **RAG-поиск** и **Ask AI**:
+
+- Нажмите **Ctrl+K** (или используйте плавающую кнопку поиска), чтобы открыть
+  AI-поиск. Запросы эмбедятся во время сборки локальной трансформерной моделью
+  (`all-MiniLM-L6-v2`, ONNX) и сравниваются по косинусной близости с
+  предвычисленными эмбеддингами — плюс keyword-fallback, когда модель недоступна.
+- **Ask AI** отвечает с цитатами: вставьте свой API-ключ Anthropic / OpenAI /
+  DeepSeek (хранится только в `localStorage` и уходит только провайдеру), и сайт
+  подберёт релевантные фрагменты документации и стримит ответ с источниками.
+- Индекс (`search-index.json`) генерируется при сборке командой
+  `bun run index:search` в `site/` и не коммитится в репозиторий.
 
 ---
 

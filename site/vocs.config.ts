@@ -8,6 +8,9 @@ export default defineConfig({
   colorScheme: "dark",
   logoUrl: "/logo.svg",
   iconUrl: "/logo.svg",
+  head: {
+    script: [{ src: "/search.js", defer: true }],
+  },
   socials: [{ icon: "github", link: "https://github.com/redspaceMP/sdk" }],
   topNav: [
     { text: "Getting Started", link: "/getting-started" },
