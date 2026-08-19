@@ -1,7 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import { extname, join, relative, resolve } from "node:path";
 
-export const STALE_PATTERNS: RegExp[] = [/waveluv/g, /github\.io/g, /redspacem\.github\.io/g];
+export const STALE_PATTERNS: RegExp[] = [/waveluv/g, /github\.io/g, /RedSpace\.github\.io/g];
 
 export const IGNORED_DIRS = new Set([
   ".git",

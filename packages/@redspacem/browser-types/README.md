@@ -1,6 +1,6 @@
 # @redspacem/browser-types
 
-CEF/NUI-style UI bridge types for RedSpaceM: a typed message channel between
+CEF/NUI-style UI bridge types for RedSpace: a typed message channel between
 game scripts and browser surfaces.
 
 - `BrowserBridge<TIn, TOut>` — typed `on` / `off` / `emit`
@@ -32,4 +32,4 @@ bridge.emit("setSpeed", { kmh: 90 });
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/redspaceMP/sdk).
+MIT — see [LICENSE](./LICENSE). Part of the [RedSpace SDK](https://github.com/redspaceMP/sdk).

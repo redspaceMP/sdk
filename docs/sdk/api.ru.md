@@ -106,7 +106,9 @@ class RpcServer {
 ```
 
 `handle` возвращает id запроса в ответе; неизвестные методы и исключения в
-хендлерах возвращаются как `{ ok: false, error }`.
+хендлерах возвращаются как `{ ok: false, error }`. Битые пейлоады (невалидный
+JSON, не-объекты, отсутствующий метод) тоже возвращают `{ ok: false, error }`
+вместо исключения.
 
 ### `RpcClient` и транспорт
 
@@ -117,13 +119,15 @@ interface RpcTransport {
 
 class RpcClient {
   constructor(transport: RpcTransport);
-  call<T = unknown>(method: string, req: unknown): Promise<T>;
+  call<T = unknown>(method: string, req: unknown, timeoutMs?: number): Promise<T>;
   handleResponse(raw: string): void;
 }
 ```
 
-`call` назначает id и резолвится, когда приходит ответ с этим id. Для таймаутов
-оберните промис (например, `Promise.race` с таймером).
+`call` назначает id и резолвится, когда приходит ответ с этим id. Передайте
+`timeoutMs`, чтобы отклонить вызов вместо бесконечного ожидания; синхронное
+исключение в `transport.send` тоже отклоняет вызов и не оставляет зависшую
+запись в `pending`.
 
 ### `TypedRpc` / `createTypedRpc`
 
@@ -163,6 +167,7 @@ createContainer(): Container;
 ```
 
 Фабрики запускаются не более одного раза — первый `resolve` создаёт и кэширует.
+Циклические зависимости, обнаруженные при резолве, бросают понятную ошибку.
 
 ---
 
@@ -274,4 +279,4 @@ createMemoryTransport(server: RpcServer): MemoryTransport;
 
 ---
 
-Дальше: [Участие в разработке](./contributing.ru.md) · [Дорожная карта](./roadmap.ru.md)
+Дальше: [Участие в разработке](./contributing.ru.md)

@@ -53,6 +53,32 @@ describe("createMockMp", () => {
     const mp = createMockMp();
     expect(() => mp.runCommand("missing", player, [])).not.toThrow();
   });
+
+  test("emit reaches multiple listeners and dedupes identical handlers", () => {
+    const mp = createMockMp();
+    const seen: string[] = [];
+    const handler = (p: MpPlayer): void => {
+      seen.push(p.name);
+    };
+    mp.events.on("playerJoin", handler);
+    mp.events.on("playerJoin", handler);
+
+    mp.emit("playerJoin", player);
+    expect(seen).toEqual(["ada"]);
+  });
+
+  test("emit with no listeners is a no-op", () => {
+    const mp = createMockMp();
+    expect(() => mp.emit("playerJoin", player)).not.toThrow();
+  });
+
+  test("copies configured players instead of aliasing the options array", () => {
+    const players = [player];
+    const mp = createMockMp({ players });
+    players.push({ id: 2, name: "bob", pingMs: 15, connectedAt: 0 });
+
+    expect(mp.players).toEqual([player]);
+  });
 });
 
 describe("createMemoryTransport", () => {
@@ -73,5 +99,21 @@ describe("createMemoryTransport", () => {
     const { client } = createMemoryTransport(server);
 
     await expect(client.call("boom", {})).rejects.toThrow(/kaboom/);
+  });
+
+  test("routes concurrent calls by id", async () => {
+    const server = new RpcServer();
+    server.on("echo", async (req: { v: number }) => {
+      await Bun.sleep(10 - req.v);
+      return req.v;
+    });
+    const { client } = createMemoryTransport(server);
+
+    const results = await Promise.all([
+      client.call<number>("echo", { v: 1 }),
+      client.call<number>("echo", { v: 2 }),
+      client.call<number>("echo", { v: 3 }),
+    ]);
+    expect(results).toEqual([1, 2, 3]);
   });
 });

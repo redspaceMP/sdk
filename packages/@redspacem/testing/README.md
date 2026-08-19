@@ -1,6 +1,6 @@
 # @redspacem/testing
 
-Testing helpers for RedSpaceM resources.
+Testing helpers for RedSpace resources.
 
 - `createMockMp` — an `Mp`-shaped mock with in-memory event bus, command
   registry and log recording, for unit-testing gamemode logic
@@ -33,4 +33,4 @@ const sum = await client.call<number>("add", { a: 2, b: 3 });
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/redspaceMP/sdk).
+MIT — see [LICENSE](./LICENSE). Part of the [RedSpace SDK](https://github.com/redspaceMP/sdk).

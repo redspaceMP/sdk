@@ -11,12 +11,14 @@ export type Factory<T> = () => T;
  *   (lazy singleton) and the result is cached on first `resolve`.
  * - `registerValue` binds a token to a ready-made value.
  * - `has` reports whether a token is bound.
- * - `resolve` throws when the token is unbound.
+ * - `resolve` throws when the token is unbound or a circular dependency is
+ *   detected while constructing factories.
  */
 export class Container {
   private readonly factories = new Map<string, Factory<unknown>>();
   private readonly instances = new Map<string, unknown>();
   private readonly values = new Set<string>();
+  private readonly resolving = new Set<string>();
 
   /** Bind `token` to a lazy factory. Re-registering replaces the binding. */
   register<T>(token: string, factory: Factory<T>): void {
@@ -32,8 +34,14 @@ export class Container {
     this.instances.set(token, value);
   }
 
-  /** Resolve `token`, instantiating and caching it on first use. */
+  /**
+   * Resolve `token`, instantiating and caching it on first use. Throws a clear
+   * error when the token is unbound or its construction loops (cycle).
+   */
   resolve<T = unknown>(token: string): T {
+    if (this.resolving.has(token)) {
+      throw new Error(`Circular dependency detected while resolving token "${token}"`);
+    }
     if (this.values.has(token) || this.instances.has(token)) {
       return this.instances.get(token) as T;
     }
@@ -41,9 +49,14 @@ export class Container {
     if (factory === undefined) {
       throw new Error(`No binding registered for token "${token}"`);
     }
-    const instance = factory();
-    this.instances.set(token, instance);
-    return instance as T;
+    this.resolving.add(token);
+    try {
+      const instance = factory();
+      this.instances.set(token, instance);
+      return instance as T;
+    } finally {
+      this.resolving.delete(token);
+    }
   }
 
   /** True when `token` has a binding (factory or value). */

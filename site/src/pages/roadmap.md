@@ -1,13 +1,13 @@
 # Roadmap
 
-The RedSpaceM SDK evolves alongside the platform's scripting host. The
+The RedSpace SDK evolves alongside the platform's scripting host. The
 **server core is closed source and ships separately**; the milestones below
 are phrased from the public SDK's point of view.
 
 The platform's arc, in one line:
 
 ```
-transport → scripting host → voice → assets → gateway
+transport → scripting host → voice → assets → gateway → anti-cheat → 1000 players
 ```
 
 ## M0 — Foundation ✅

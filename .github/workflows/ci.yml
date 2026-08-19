@@ -2,16 +2,40 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
 
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
+  rust:
+    name: Rust (fmt, clippy, test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: fmt
+        run: cargo fmt --all -- --check
+
+      - name: clippy
+        run: cargo clippy --workspace --all-targets -- -D warnings
+
+      - name: test
+        run: cargo test
+
   ts:
-    name: TypeScript SDK (lint, build, typecheck, test)
+    name: TypeScript (lint, build, typecheck, test)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,21 +44,21 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Install
+      - name: install
         run: bun install
 
-      - name: Lint
+      - name: lint
         run: bun run lint
 
       # Build before typecheck/test: packages consume sibling packages'
       # `dist/` output through their published `exports` maps.
-      - name: Build
+      - name: build
         run: bun run build
 
-      - name: Typecheck
+      - name: typecheck
         run: bun run typecheck
 
-      - name: Test
+      - name: test
         run: bun test
 
   docs:

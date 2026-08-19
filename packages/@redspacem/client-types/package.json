@@ -1,12 +1,12 @@
 {
   "name": "@redspacem/client-types",
   "version": "0.1.2",
-  "description": "Typed contract for the client-side scripting API injected by the RedSpaceM client plugin (ClientMp, camera, input, render, event bus) plus a lerp helper.",
+  "description": "Typed contract for the client-side scripting API injected by the RedSpace client plugin (ClientMp, camera, input, render, event bus) plus a lerp helper.",
   "license": "MIT",
-  "author": "RedSpaceM contributors",
+  "author": "RedSpace contributors",
   "type": "module",
   "keywords": [
-    "redspacem",
+    "RedSpace",
     "cyberpunk-2077",
     "multiplayer",
     "client",

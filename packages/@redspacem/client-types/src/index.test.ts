@@ -18,6 +18,10 @@ describe("lerp", () => {
     expect(lerp(0, 10, 2)).toBe(10);
     expect(lerp(0, 10, -1)).toBe(0);
   });
+
+  test("interpolates between reversed bounds", () => {
+    expect(lerp(10, 0, 0.5)).toBe(5);
+  });
 });
 
 // Type-level check: a conforming client host object satisfies the `ClientMp`

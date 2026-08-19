@@ -1,5 +1,5 @@
 // Client-side scripting API contract: the `mp.client` global injected by the
-// RedSpaceM client plugin into in-game (RED4ext-style) scripts.
+// RedSpace client plugin into in-game (RED4ext-style) scripts.
 
 import type { MpVector3 } from "@redspacem/server-types";
 
@@ -36,6 +36,7 @@ export interface ClientEventMap {
   frame: { deltaMs: number };
 }
 
+/** Handler for a client-side event: receives the payload declared for `name`. */
 export type ClientEventHandler<T extends keyof ClientEventMap> = (
   payload: ClientEventMap[T],
 ) => void;

@@ -1,7 +1,6 @@
 {
-  "name": "redspacem-example-freeroam",
+  "name": "freeroam-resource",
   "private": true,
-  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "build": "bun build server/src/index.ts --target=bun --format=esm --outfile=server/dist/index.js",

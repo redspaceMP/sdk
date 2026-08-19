@@ -94,4 +94,55 @@ describe("createBrowserBridge", () => {
     bridge.on("speedChanged", () => {});
     expect(transport.subscribeCalls).toBe(1);
   });
+
+  test("dispatches to multiple handlers", () => {
+    const transport = makeFakeTransport();
+    const bridge = createBrowserBridge({
+      postMessage: transport.postMessage,
+      subscribe: transport.subscribe,
+    });
+    const first: unknown[] = [];
+    const second: unknown[] = [];
+    bridge.on("speedChanged", (payload) => first.push(payload));
+    bridge.on("speedChanged", (payload) => second.push(payload));
+
+    transport.dispatch({ event: "speedChanged", payload: { kmh: 90 } });
+    expect(first).toEqual([{ kmh: 90 }]);
+    expect(second).toEqual([{ kmh: 90 }]);
+  });
+
+  test("adding the same handler twice dispatches it once", () => {
+    const transport = makeFakeTransport();
+    const bridge = createBrowserBridge({
+      postMessage: transport.postMessage,
+      subscribe: transport.subscribe,
+    });
+    const calls: unknown[] = [];
+    const handler = (payload: unknown): void => {
+      calls.push(payload);
+    };
+    bridge.on("speedChanged", handler);
+    bridge.on("speedChanged", handler);
+
+    transport.dispatch({ event: "speedChanged", payload: { kmh: 90 } });
+    expect(calls).toEqual([{ kmh: 90 }]);
+  });
+
+  test("off for an unregistered event is a no-op", () => {
+    const transport = makeFakeTransport();
+    const bridge = createBrowserBridge({
+      postMessage: transport.postMessage,
+      subscribe: transport.subscribe,
+    });
+
+    expect(() => bridge.off("speedChanged", () => {})).not.toThrow();
+  });
+
+  test("emit works without a subscribe transport", () => {
+    const transport = makeFakeTransport();
+    const bridge = createBrowserBridge({ postMessage: transport.postMessage });
+
+    bridge.emit("setSpeed", { kmh: 90 });
+    expect(transport.posted).toEqual([{ event: "setSpeed", payload: { kmh: 90 } }]);
+  });
 });

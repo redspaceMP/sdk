@@ -1,12 +1,12 @@
 {
   "name": "@redspacem/browser-types",
   "version": "0.1.2",
-  "description": "CEF/NUI-style UI bridge types for RedSpaceM: typed event channel between game scripts and browser surfaces, plus createBrowserBridge.",
+  "description": "CEF/NUI-style UI bridge types for RedSpace: typed event channel between game scripts and browser surfaces, plus createBrowserBridge.",
   "license": "MIT",
-  "author": "RedSpaceM contributors",
+  "author": "RedSpace contributors",
   "type": "module",
   "keywords": [
-    "redspacem",
+    "RedSpace",
     "cyberpunk-2077",
     "multiplayer",
     "cef",

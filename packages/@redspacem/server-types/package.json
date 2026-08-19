@@ -1,12 +1,12 @@
 {
   "name": "@redspacem/server-types",
   "version": "0.1.2",
-  "description": "Typed contract for the mp.* scripting host API injected by the RedSpaceM server core (Mp, MpPlayer, MpVector3, MpVehicle, events, commands).",
+  "description": "Typed contract for the mp.* scripting host API injected by the RedSpace server core (Mp, MpPlayer, MpVector3, MpVehicle, events, commands).",
   "license": "MIT",
-  "author": "RedSpaceM contributors",
+  "author": "RedSpace contributors",
   "type": "module",
   "keywords": [
-    "redspacem",
+    "RedSpace",
     "cyberpunk-2077",
     "multiplayer",
     "gamemode",

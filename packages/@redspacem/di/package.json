@@ -1,12 +1,12 @@
 {
   "name": "@redspacem/di",
   "version": "0.1.2",
-  "description": "A tiny dependency-injection container for RedSpaceM resources: register, registerValue, resolve and has with lazy singletons.",
+  "description": "A tiny dependency-injection container for RedSpace resources: register, registerValue, resolve and has with lazy singletons.",
   "license": "MIT",
-  "author": "RedSpaceM contributors",
+  "author": "RedSpace contributors",
   "type": "module",
   "keywords": [
-    "redspacem",
+    "RedSpace",
     "cyberpunk-2077",
     "multiplayer",
     "di",

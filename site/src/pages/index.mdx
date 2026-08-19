@@ -1,6 +1,6 @@
 ---
-title: RedSpaceM SDK
-description: Build multiplayer gamemodes for Cyberpunk 2077 servers.
+title: RedSpace SDK
+description: The official TypeScript SDK for RedSpace — build multiplayer gamemodes for Cyberpunk 2077 roleplay servers.
 layout: blank
 showAskAi: false
 showBanner: false
@@ -9,104 +9,256 @@ showFeedback: false
 
 import { Card, Cards, Link } from "vocs";
 
-<div className="vocs:mx-auto vocs:flex vocs:w-full vocs:max-w-[900px] vocs:flex-col vocs:px-8 vocs:pt-20 vocs:pb-16 vocs:max-[700px]:px-5">
-  <div className="vocs:mb-6 vocs:flex vocs:items-center vocs:justify-center">
-    <img src="/logo.svg" alt="RedSpaceM" className="vocs:h-16 vocs:w-16" />
-  </div>
+<header className="rs-nav">
+  <a href="/" className="rs-nav-brand" aria-label="RedSpace home">
+    <img src="/logo.svg" alt="RedSpace logo" width={26} height={26} />
+    RedSpace
+  </a>
+  <nav className="rs-nav-links" aria-label="Landing">
+    <Link to="/getting-started">Docs</Link>
+    <Link to="/api">API</Link>
+    <Link to="/roadmap">Roadmap</Link>
+    <Link to="/ru/getting-started">Русский</Link>
+    <a href="https://github.com/redspaceMP/sdk" target="_blank" rel="noreferrer">
+      GitHub
+    </a>
+  </nav>
+</header>
 
-  <h1 className="vocs:m-0 vocs:mb-4 vocs:text-center vocs:text-[clamp(40px,5.6vw,64px)] vocs:font-semibold vocs:leading-[1] vocs:tracking-[-0.025em] vocs:text-heading">
-    {"RedSpaceM SDK"}
+<section className="rs-hero">
+  <span className="rs-hero-eyebrow">TypeScript SDK for Cyberpunk 2077 multiplayer</span>
+
+  <h1 className="rs-hero-title">
+    <span className="rs-glitch" data-text="RedSpace">RedSpace</span>{" "}
+    <span className="rs-grad">SDK</span>
   </h1>
 
-  <p className="vocs:mx-auto vocs:m-0 vocs:mb-8 vocs:max-w-[640px] vocs:text-center vocs:text-xl vocs:leading-[1.6] vocs:text-secondary">
-    {"The official TypeScript SDK for RedSpaceM — build multiplayer gamemodes for Cyberpunk 2077 roleplay servers with a typed "}
-    <code>{"mp.*"}</code>
-    {" API."}
+  <p className="rs-hero-tagline">
+    A FiveM-inspired platform for Cyberpunk 2077 roleplay servers. Write gamemodes
+    in TypeScript against a typed <code>mp.*</code> host API — powered by a
+    high-performance Rust core. Contract-first, testable today.
   </p>
 
-  <div className="vocs:mb-10 vocs:flex vocs:flex-wrap vocs:justify-center vocs:gap-3">
-    <Link
-      to="/getting-started"
-      className="vocs:inline-flex vocs:min-h-12 vocs:items-center vocs:justify-center vocs:gap-2.5 vocs:rounded-[var(--vocs-radius-lg)] vocs:border vocs:border-solid vocs:border-accent vocs:bg-accent vocs:px-[22px] vocs:text-[15px] vocs:font-medium vocs:text-accentInvert vocs:no-underline vocs:transition-opacity vocs:duration-100 vocs:hover:opacity-90"
-    >
-      {"Get started"}
+  <div className="rs-hero-cta">
+    <Link to="/getting-started" className="rs-cta rs-cta--primary">
+      Get started
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M5 12h14" />
+        <path d="m13 6 6 6-6 6" />
+      </svg>
     </Link>
     <a
       href="https://github.com/redspaceMP/sdk"
-      className="vocs:inline-flex vocs:min-h-12 vocs:items-center vocs:justify-center vocs:gap-2.5 vocs:rounded-[var(--vocs-radius-lg)] vocs:border vocs:border-solid vocs:border-primary vocs:bg-surface vocs:px-[22px] vocs:text-[15px] vocs:font-medium vocs:text-heading vocs:no-underline vocs:transition-colors vocs:duration-100 vocs:hover:border-secondary vocs:hover:bg-surfaceTint"
+      target="_blank"
+      rel="noreferrer"
+      className="rs-cta rs-cta--ghost"
     >
-      {"GitHub"}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
+      </svg>
+      GitHub
+    </a>
+    <a
+      href="https://www.npmjs.com/search?q=%40redspacem"
+      target="_blank"
+      rel="noreferrer"
+      className="rs-cta rs-cta--ghost"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2v4" />
+        <path d="m17 5-1.5-1.5" />
+        <path d="M4.93 10.93 3.5 9.5" />
+        <path d="M20.5 9.5l-1.43 1.43" />
+        <path d="M12 22v-4" />
+        <circle cx="12" cy="12" r="3.5" />
+      </svg>
+      npm
     </a>
   </div>
-</div>
 
-<div className="vocs:mx-auto vocs:w-full vocs:max-w-[900px] vocs:px-8 vocs:pb-24 vocs:max-[700px]:px-5">
-  <h2 id="what-is-redspacem-sdk">What is RedSpaceM SDK?</h2>
+  <p className="rs-hero-hint">
+    Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to search the docs with the built-in AI index.
+  </p>
+</section>
 
-  The official TypeScript SDK for RedSpaceM — a FiveM-inspired platform for
-  Cyberpunk 2077 roleplay servers. A high-performance **Rust core** (closed
-  source, ships separately) injects a typed `mp.*` scripting API into your
-  resources. This repository contains everything you need on the TypeScript
-  side:
+<section className="rs-section">
+  <div className="rs-terminal" aria-label="Minimal RedSpace resource">
+    <div className="rs-terminal-bar">
+      <span className="rs-terminal-dot rs-terminal-dot--pink" />
+      <span className="rs-terminal-dot rs-terminal-dot--amber" />
+      <span className="rs-terminal-dot rs-terminal-dot--cyan" />
+      <span className="rs-terminal-title">resources/freeroam · server/src/index.ts</span>
+    </div>
+    ```ts
+    import type { Mp } from "@redspacem/server-types";
+    import { createContainer } from "@redspacem/di";
 
-  - **6 dependency-free packages** published to npm (ESM + type declarations)
-  - **Bun workspaces** — develop, lint, build and test with one runtime
-  - **Mocks built in** — unit-test gamemodes before the server core ships
+    export function main(mp: Mp): void {
+      const container = createContainer();
+      container.registerValue("mp", mp);
 
-  ```sh
-  bun add @redspacem/server-types @redspacem/rpc @redspacem/di
-  ```
+      mp.events.on("playerJoin", (player) => {
+        mp.log("info", `${player.name} (id=${player.id}) joined`);
+      });
 
-  A minimal resource:
+      mp.commands.register("hello", (player, args) => {
+        mp.log("info", `Hello, ${player.name}!`);
+      });
+    }
+    ```
+  </div>
+</section>
 
-  ```ts
-  import type { Mp } from "@redspacem/server-types";
-  import { createContainer } from "@redspacem/di";
+<section className="rs-section rs-section--alt">
+  <div className="rs-section-head">
+    <span className="rs-kicker">The platform</span>
+    <h2>One platform. Two worlds.</h2>
+    <p>
+      A Rust core owns the simulation; a typed TypeScript SDK owns your gamemode.
+      The contract between them is <code>mp.*</code> — and you can build against it
+      today.
+    </p>
+  </div>
 
-  export function main(mp: Mp): void {
-    const container = createContainer();
-    container.registerValue("mp", mp);
+  <div className="rs-features">
+    <div className="rs-feature">
+      <span className="rs-feature-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M2 12h20" />
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" />
+        </svg>
+      </span>
+      <h3>Cyberpunk 2077 multiplayer</h3>
+      <p>
+        A FiveM/RageMP-style platform for Cyberpunk 2077 roleplay servers. Each
+        server is an autonomous world; players connect directly over QUIC.
+      </p>
+    </div>
 
-    mp.events.on("playerJoin", (player) => {
-      mp.log("info", `${player.name} (id=${player.id}) joined`);
-    });
+    <div className="rs-feature">
+      <span className="rs-feature-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="4" y="4" width="16" height="16" rx="2" />
+          <rect x="9" y="9" width="6" height="6" />
+          <path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2" />
+        </svg>
+      </span>
+      <h3>Rust server core</h3>
+      <p>
+        A closed-source Rust core owns the game world, network, voice, assets and
+        persistence — and exposes a typed <code>mp.*</code> scripting host to
+        TypeScript resources.
+      </p>
+    </div>
 
-    mp.commands.register("hello", (player, args) => {
-      mp.log("info", `Hello, ${player.name}!`);
-    });
-  }
-  ```
+    <div className="rs-feature">
+      <span className="rs-feature-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m12 2 8 4.5-8 4.5-8-4.5L12 2Z" />
+          <path d="m4 12.5 8 4.5 8-4.5" />
+          <path d="m4 17.5 8 4.5 8-4.5" />
+        </svg>
+      </span>
+      <h3>Typed TypeScript SDK</h3>
+      <p>
+        Six dependency-free <code>@redspacem/*</code> packages with built-in mocks —
+        write type-safe gamemodes and unit-test them before the host ships.
+      </p>
+    </div>
 
-  <Cards>
-    <Card
-      title="Getting Started"
-      description="Install the SDK and write your first resource."
-      icon="book-open"
-      to="/getting-started"
-    />
-    <Card
-      title="Architecture"
-      description="How the SDK layers map to the Rust core."
-      icon="layers"
-      to="/architecture"
-    />
-    <Card
-      title="API Reference"
-      description="Types and signatures for every package."
-      icon="code"
-      to="/api"
-    />
-    <Card
-      title="Contributing"
-      description="Build, test and publish the packages."
-      icon="git-commit"
-      to="/contributing"
-    />
-    <Card
-      title="Roadmap"
-      description="Where the platform is heading."
-      icon="map"
-      to="/roadmap"
-    />
-  </Cards>
-</div>
+    <div className="rs-feature">
+      <span className="rs-feature-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M9 20 4 4l16 11-7 1-2 4Z" />
+          <path d="m13 11-2 2" />
+        </svg>
+      </span>
+      <h3>Roadmap M0 → M10</h3>
+      <p>
+        QUIC transport, world simulation, a QuickJS scripting host, voice, assets,
+        gateway and anti-cheat — stress-tested from 200 to 1000 players.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section className="rs-section">
+  <div className="rs-section-head">
+    <span className="rs-kicker">The SDK</span>
+    <h2>Everything on the TypeScript side</h2>
+    <p>
+      Small, focused packages published to npm. No framework lock-in, no runtime
+      dependencies — just typed contracts, transport and mocks.
+    </p>
+  </div>
+
+  <div className="rs-packages">
+    <Cards>
+      <Card
+        title="Getting Started"
+        description="Install the SDK and write your first resource."
+        icon="book-open"
+        to="/getting-started"
+      />
+      <Card
+        title="Architecture"
+        description="How the SDK layers map to the Rust core."
+        icon="layers"
+        to="/architecture"
+      />
+      <Card
+        title="API Reference"
+        description="Types and signatures for every package."
+        icon="code"
+        to="/api"
+      />
+      <Card
+        title="Contributing"
+        description="Build, test and publish the packages."
+        icon="git-commit"
+        to="/contributing"
+      />
+      <Card
+        title="Roadmap"
+        description="Where the platform is heading — M0 to M10."
+        icon="map"
+        to="/roadmap"
+      />
+    </Cards>
+  </div>
+</section>
+
+<section className="rs-section">
+  <div className="rs-cta-band">
+    <h2>Ready to build in Night City?</h2>
+    <p>
+      Spin up a gamemode resource, test it against the mocks, and be ready when
+      the scripting host lands.
+    </p>
+    <div className="rs-hero-cta">
+      <Link to="/getting-started" className="rs-cta rs-cta--primary">
+        Read the docs
+      </Link>
+      <Link to="/api" className="rs-cta rs-cta--ghost">
+        API reference
+      </Link>
+      <a
+        href="https://github.com/redspaceMP/sdk"
+        target="_blank"
+        rel="noreferrer"
+        className="rs-cta rs-cta--ghost"
+      >
+        GitHub
+      </a>
+      <a
+        href="https://www.npmjs.com/search?q=%40redspacem"
+        target="_blank"
+        rel="noreferrer"
+        className="rs-cta rs-cta--ghost"
+      >
+        npm
+      </a>
+    </div>
+  </div>
+</section>

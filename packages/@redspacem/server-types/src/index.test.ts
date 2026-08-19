@@ -13,6 +13,11 @@ describe("clamp", () => {
   test("keeps in-range values", () => {
     expect(clamp(2, 0, 5)).toBe(2);
   });
+
+  test("keeps boundary values unchanged", () => {
+    expect(clamp(0, 0, 5)).toBe(0);
+    expect(clamp(5, 0, 5)).toBe(5);
+  });
 });
 
 describe("distance", () => {
@@ -26,11 +31,21 @@ describe("distance", () => {
     const p: MpVector3 = { x: 1, y: 2, z: 3 };
     expect(distance(p, p)).toBe(0);
   });
+
+  test("computes 3D distance", () => {
+    const a: MpVector3 = { x: 0, y: 0, z: 0 };
+    const b: MpVector3 = { x: 1, y: 2, z: 2 };
+    expect(distance(a, b)).toBe(3);
+  });
 });
 
 describe("isValidCommandName", () => {
   test("accepts plain names", () => {
     expect(isValidCommandName("givecar")).toBe(true);
+  });
+
+  test("accepts a single lowercase letter", () => {
+    expect(isValidCommandName("a")).toBe(true);
   });
 
   test("accepts digits and separators after the first char", () => {

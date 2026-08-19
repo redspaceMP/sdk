@@ -5,9 +5,9 @@
   const EMBED_MODEL = "Xenova/all-MiniLM-L6-v2";
   const TOP_N = 5;
   const ASK_N = 3;
-  const LS_PROVIDER = "redspacem.ai.provider";
-  const LS_KEY = "redspacem.ai.key";
-  const LS_MODEL = "redspacem.ai.model";
+  const LS_PROVIDER = "RedSpace.ai.provider";
+  const LS_KEY = "RedSpace.ai.key";
+  const LS_MODEL = "RedSpace.ai.model";
 
   const PROVIDERS = {
     anthropic: {
@@ -423,7 +423,7 @@
       )
       .join("\n\n");
     const system =
-      "You are a concise technical assistant for the RedSpaceM SDK documentation. " +
+      "You are a concise technical assistant for the RedSpace SDK documentation. " +
       "Answer the user's question using ONLY the documentation excerpts provided below. " +
       "Reference excerpts inline as [1], [2], [3] right after the facts they support. " +
       "If the excerpts do not contain the answer, say so clearly and point to the docs site instead of guessing.";
@@ -559,7 +559,7 @@
         </div>
         <div class="rsm-panel" id="rsm-panel-search">
           <div class="rsm-input-row">
-            <input type="search" class="rsm-input" id="rsm-search-input" placeholder="Search the RedSpaceM docs… (e.g. “createContainer”, “playerJoin”)" autocomplete="off" />
+            <input type="search" class="rsm-input" id="rsm-search-input" placeholder="Search the RedSpace docs… (e.g. “createContainer”, “playerJoin”)" autocomplete="off" />
           </div>
           <div class="rsm-body">
             <div class="rsm-empty">${magnifierIcon()}<div>Type to search the docs — or use Ask AI for answers.</div></div>

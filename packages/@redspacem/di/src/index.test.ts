@@ -62,3 +62,44 @@ describe("Container", () => {
     expect(container.resolve<string>("version")).toBe("0.2.0");
   });
 });
+
+describe("Container cycles and overrides", () => {
+  test("throws a clear error on circular dependencies", () => {
+    const container = createContainer();
+    container.register("a", () => container.resolve("b"));
+    container.register("b", () => container.resolve("a"));
+    expect(() => container.resolve("a")).toThrow(/Circular dependency/);
+  });
+
+  test("throws on a self-referencing factory", () => {
+    const container = createContainer();
+    container.register("self", () => container.resolve("self"));
+    expect(() => container.resolve("self")).toThrow(/Circular dependency/);
+  });
+
+  test("re-registering a factory after resolve invalidates the cached instance", () => {
+    const container = createContainer();
+    container.register("svc", () => ({ kind: "first" }));
+    const first = container.resolve<{ kind: string }>("svc");
+    container.register("svc", () => ({ kind: "second" }));
+    const second = container.resolve<{ kind: string }>("svc");
+    expect(first).toEqual({ kind: "first" });
+    expect(second).toEqual({ kind: "second" });
+    expect(first).not.toBe(second);
+  });
+
+  test("register replaces a previously registered value", () => {
+    const container = createContainer();
+    container.registerValue("cfg", { via: "value" });
+    container.register("cfg", () => ({ via: "factory" }));
+    expect(container.resolve<{ via: string }>("cfg")).toEqual({ via: "factory" });
+  });
+
+  test("registerValue replaces a previously resolved factory instance", () => {
+    const container = createContainer();
+    container.register("cfg", () => ({ via: "factory" }));
+    expect(container.resolve<{ via: string }>("cfg")).toEqual({ via: "factory" });
+    container.registerValue("cfg", { via: "value" });
+    expect(container.resolve<{ via: string }>("cfg")).toEqual({ via: "value" });
+  });
+});

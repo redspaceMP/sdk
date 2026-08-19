@@ -1,12 +1,12 @@
 {
   "name": "@redspacem/testing",
   "version": "0.1.2",
-  "description": "Testing helpers for RedSpaceM resources: createMockMp for a mock mp.* host and createMemoryTransport for in-memory RPC.",
+  "description": "Testing helpers for RedSpace resources: createMockMp for a mock mp.* host and createMemoryTransport for in-memory RPC.",
   "license": "MIT",
-  "author": "RedSpaceM contributors",
+  "author": "RedSpace contributors",
   "type": "module",
   "keywords": [
-    "redspacem",
+    "RedSpace",
     "cyberpunk-2077",
     "multiplayer",
     "testing",

@@ -1,20 +1,18 @@
 {
-  "name": "redspacem-sdk",
-  "version": "0.1.0",
+  "name": "redspacem",
   "private": true,
-  "type": "module",
-  "description": "RedSpaceM SDK — build multiplayer gamemodes for Cyberpunk 2077 servers (TypeScript packages + freeroam example).",
-  "workspaces": [
-    "packages/@redspacem/*",
-    "examples/*"
-  ],
   "scripts": {
     "lint": "biome check .",
     "format": "biome format --write .",
     "typecheck": "bun run --filter '*' typecheck",
     "test": "bun test",
-    "build": "bun run --cwd packages/@redspacem/server-types build && bun run --cwd packages/@redspacem/rpc build && bun run --cwd packages/@redspacem/client-types build && bun run --cwd packages/@redspacem/di build && bun run --cwd packages/@redspacem/browser-types build && bun run --cwd packages/@redspacem/testing build && bun run --cwd examples/freeroam build"
+    "build": "bun run --cwd packages/@redspacem/server-types build && bun run --cwd packages/@redspacem/rpc build && bun run --cwd packages/@redspacem/client-types build && bun run --cwd packages/@redspacem/di build && bun run --cwd packages/@redspacem/browser-types build && bun run --cwd packages/@redspacem/testing build && bun run --cwd resources/freeroam build"
   },
+  "type": "module",
+  "workspaces": [
+    "packages/@redspacem/*",
+    "resources/freeroam"
+  ],
   "devDependencies": {
     "@biomejs/biome": "^2.5.8",
     "typescript": "^7.0.2"

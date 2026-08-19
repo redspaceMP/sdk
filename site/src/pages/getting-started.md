@@ -1,13 +1,13 @@
 # Getting Started
 
-This guide walks you through installing the RedSpaceM SDK packages and writing
+This guide walks you through installing the RedSpace SDK packages and writing
 your first gamemode resource.
 
 ## Prerequisites
 
 - **Bun 1.3+** (the SDK is built and tested with Bun). Install from
   [https://bun.sh](https://bun.sh). The repository does **not** use npm/yarn.
-- A RedSpaceM **server core** to run your resource. The core is a separate,
+- A RedSpace **server core** to run your resource. The core is a separate,
   closed-source product — this SDK only needs it at deploy time. For local
   development and unit tests you can develop fully against the SDK's mocks.
 
@@ -55,7 +55,7 @@ export function main(mp: Mp): void {
 }
 ```
 
-The `mp` object is **not** something you construct — the RedSpaceM server core
+The `mp` object is **not** something you construct — the RedSpace server core
 injects a conforming `mp` global into every resource sandbox at runtime. The
 types describe that contract.
 

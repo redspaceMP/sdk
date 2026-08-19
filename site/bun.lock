@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "redspacem-docs",
+      "name": "redspace-docs",
       "dependencies": {
         "react": "^19",
         "react-dom": "^19",

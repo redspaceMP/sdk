@@ -1,6 +1,6 @@
 # @redspacem/di
 
-A tiny dependency-injection container for RedSpaceM resources.
+A tiny dependency-injection container for RedSpace resources.
 
 - `register` / `registerValue` / `resolve` / `has`
 - Lazy singletons: factories run at most once
@@ -26,4 +26,4 @@ const config = container.resolve<{ port: number }>("config");
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/redspaceMP/sdk).
+MIT — see [LICENSE](./LICENSE). Part of the [RedSpace SDK](https://github.com/redspaceMP/sdk).

@@ -107,7 +107,9 @@ class RpcServer {
 ```
 
 `handle` echoes the request id back; unknown methods and handler exceptions
-surface as `{ ok: false, error }`.
+surface as `{ ok: false, error }`. Malformed payloads (invalid JSON,
+non-objects, missing method) also return `{ ok: false, error }` instead of
+throwing.
 
 ### `RpcClient` & transport
 
@@ -118,13 +120,15 @@ interface RpcTransport {
 
 class RpcClient {
   constructor(transport: RpcTransport);
-  call<T = unknown>(method: string, req: unknown): Promise<T>;
+  call<T = unknown>(method: string, req: unknown, timeoutMs?: number): Promise<T>;
   handleResponse(raw: string): void;
 }
 ```
 
-`call` assigns an id and resolves when the matching response arrives. For
-timeout behavior, wrap the promise (e.g. `Promise.race` with a timer).
+`call` assigns an id and resolves when the matching response arrives. Pass
+`timeoutMs` to reject the call instead of waiting forever; a synchronous
+`transport.send` throw also rejects the call and leaves no pending entry
+behind.
 
 ### `TypedRpc` / `createTypedRpc`
 
@@ -164,6 +168,7 @@ createContainer(): Container;
 ```
 
 Factories run at most once — the first `resolve` instantiates and caches.
+Circular dependencies detected while resolving throw a clear error.
 
 ---
 
@@ -275,4 +280,4 @@ createMemoryTransport(server: RpcServer): MemoryTransport;
 
 ---
 
-Next: [Contributing](./contributing.md) · [Roadmap](./roadmap.md)
+Next: [Contributing](./contributing.md)

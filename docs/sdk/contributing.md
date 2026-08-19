@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for wanting to help with the RedSpaceM SDK! This page covers how to
+Thanks for wanting to help with the RedSpace SDK! This page covers how to
 build, test and publish the packages.
 
 ## Requirements
@@ -18,7 +18,7 @@ packages/@redspacem/
   browser-types/  # CEF/NUI bridge types
   di/             # tiny DI container
   testing/        # mocks for unit tests
-examples/freeroam # example gamemode resource
+resources/freeroam # example gamemode resource
 docs/             # documentation (EN + RU)
 ```
 

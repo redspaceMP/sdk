@@ -1,4 +1,4 @@
-// Typed contract for the `mp.*` scripting host API injected by the RedSpaceM
+// Typed contract for the `mp.*` scripting host API injected by the RedSpace
 // host into resource sandboxes (mirrors CyberpunkMP's typed host API).
 
 /** A connected player. */
@@ -33,6 +33,7 @@ export interface MpEventMap {
   playerSpawn: { id: number; position: MpVector3 };
 }
 
+/** Handler for a host event: receives the payload declared for `name`. */
 export type MpEventHandler<T extends keyof MpEventMap> = (payload: MpEventMap[T]) => void;
 
 /** Host event bus: subscribe to and emit typed events. */
@@ -41,6 +42,7 @@ export interface MpEvents {
   emit<T extends keyof MpEventMap>(name: T, payload: MpEventMap[T]): void;
 }
 
+/** Handler for a registered command: receives the issuing player and args. */
 export type MpCommandHandler = (player: MpPlayer, args: string[]) => void;
 
 /** Host command registry. */

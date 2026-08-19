@@ -11,7 +11,9 @@
       "!site/public/search-index.json",
       "!site/public/search-index.min.json",
       "!**/dist",
-      "!examples/freeroam/server/dist",
+      "!resources/freeroam/server/dist",
+      "!tools/rsm-cli",
+      "!target",
       "!.git"
     ]
   },

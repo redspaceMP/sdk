@@ -1,6 +1,6 @@
 # @redspacem/rpc
 
-Dependency-free, type-safe RPC layer for RedSpaceM resources.
+Dependency-free, type-safe RPC layer for RedSpace resources.
 
 - `RpcServer` — dispatch raw JSON requests by method name
 - `RpcClient` — call methods with id-matched responses and timeouts
@@ -29,4 +29,4 @@ const msg = await api.call(client, "greet", { name: "red" });
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/redspaceMP/sdk).
+MIT — see [LICENSE](./LICENSE). Part of the [RedSpace SDK](https://github.com/redspaceMP/sdk).

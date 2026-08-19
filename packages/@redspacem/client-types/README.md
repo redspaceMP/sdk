@@ -1,6 +1,6 @@
 # @redspacem/client-types
 
-Typed contract for the client-side scripting API injected by the RedSpaceM
+Typed contract for the client-side scripting API injected by the RedSpace
 client plugin into in-game (RED4ext-style) scripts.
 
 - `ClientMp`, `ClientCamera`, `ClientInput`, `ClientRender`
@@ -31,4 +31,4 @@ mp.client.events.on("frame", ({ deltaMs }) => {
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/redspaceMP/sdk).
+MIT — see [LICENSE](./LICENSE). Part of the [RedSpace SDK](https://github.com/redspaceMP/sdk).

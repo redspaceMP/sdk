@@ -1,6 +1,11 @@
+# Rust
+/target
+**/*.rs.bk
+
+# Node / Bun
 node_modules/
 dist/
-out/
+/out
 *.tsbuildinfo
 
 # Vocs docs site artifacts
@@ -11,14 +16,20 @@ site/src/pages.gen.ts
 site/public/search-index.json
 site/.cache/
 
+# Environment & secrets
 .env
 .env.local
 .env.*.local
 
-*.log
+# Logs
 logs/
+*.log
 
+# OS / IDE
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
+
+# monorepo-only artifacts (harmless if absent)
+/target

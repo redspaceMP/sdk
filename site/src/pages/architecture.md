@@ -1,7 +1,7 @@
 # Architecture
 
-The RedSpaceM SDK is a set of small, focused TypeScript packages that sit
-between your gamemode logic and the RedSpaceM platform. The platform itself is
+The RedSpace SDK is a set of small, focused TypeScript packages that sit
+between your gamemode logic and the RedSpace platform. The platform itself is
 split into two worlds:
 
 ```
@@ -11,7 +11,7 @@ split into two worlds:
 └───────────────────────────┬──────────────────────────────┘
                             │  mp.* host API (injected at runtime)
 ┌───────────────────────────▼──────────────────────────────┐
-│  RedSpaceM server core (Rust, closed source)             │
+│  RedSpace server core (Rust, closed source)             │
 │  scripting host · ECS · network · voice · assets · …     │
 └──────────────────────────────────────────────────────────┘
 ```
@@ -65,7 +65,7 @@ the layer below it:
 
 ## How the SDK maps to the (closed) Rust core
 
-The RedSpaceM core is a Rust service that owns the game world, the network
+The RedSpace core is a Rust service that owns the game world, the network
 transport and the persistence. It exposes a **scripting host** to TypeScript
 resources:
 

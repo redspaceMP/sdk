@@ -1,12 +1,12 @@
 {
   "name": "@redspacem/rpc",
   "version": "0.1.2",
-  "description": "Dependency-free, type-safe RPC layer for RedSpaceM resources: RpcServer, RpcClient, TypedRpc and a JSON transport contract.",
+  "description": "Dependency-free, type-safe RPC layer for RedSpace resources: RpcServer, RpcClient, TypedRpc and a JSON transport contract.",
   "license": "MIT",
-  "author": "RedSpaceM contributors",
+  "author": "RedSpace contributors",
   "type": "module",
   "keywords": [
-    "redspacem",
+    "RedSpace",
     "cyberpunk-2077",
     "multiplayer",
     "rpc",

@@ -6,7 +6,7 @@ import { checkLinks, scanText, walkFiles } from "./check-links.mts";
 
 describe("scanText", () => {
   test("reports stale waveluv URLs with line and column", () => {
-    const content = "see https://waveluv.github.io/redspacem and nothing else\nok";
+    const content = "see https://waveluv.github.io/RedSpace and nothing else\nok";
     const matches = scanText("README.md", content);
     expect(matches).toHaveLength(2);
     expect(matches[0]).toMatchObject({ file: "README.md", line: 1, column: 13 });

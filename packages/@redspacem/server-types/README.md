@@ -1,6 +1,6 @@
 # @redspacem/server-types
 
-Typed contract for the `mp.*` scripting host API injected by the RedSpaceM
+Typed contract for the `mp.*` scripting host API injected by the RedSpace
 server core into resource sandboxes.
 
 - `Mp`, `MpPlayer`, `MpVector3`, `MpVehicle`
@@ -35,4 +35,4 @@ mp.commands.register("goto", (player, args) => {
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Part of the [RedSpaceM SDK](https://github.com/redspaceMP/sdk).
+MIT — see [LICENSE](./LICENSE). Part of the [RedSpace SDK](https://github.com/redspaceMP/sdk).

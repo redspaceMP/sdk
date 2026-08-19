@@ -14,6 +14,14 @@ export type RpcResponse<Res = unknown> =
   | { id: number; ok: true; res: Res }
   | { id: number; ok: false; error: string };
 
+/** Loosely-typed response shape used when parsing raw client input. */
+interface ParsedResponse {
+  id?: number;
+  ok?: boolean;
+  res?: unknown;
+  error?: string;
+}
+
 /** A single RPC handler. */
 export type RpcHandler<Req = unknown, Res = unknown> = (req: Req) => Res | Promise<Res>;
 
@@ -34,16 +42,25 @@ export class RpcServer {
    * Process one raw request. Echoes the request's id back in the response; if
    * the request carries no numeric id, one is assigned from an internal
    * counter. Unknown methods and handler exceptions surface as `{ok:false}`.
+   * Malformed payloads (invalid JSON, non-objects, missing method) also return
+   * a `{ok:false}` response instead of throwing.
    */
   async handle(raw: string): Promise<string> {
-    let request: RpcRequest;
+    let parsed: unknown;
     try {
-      request = JSON.parse(raw) as RpcRequest;
+      parsed = JSON.parse(raw);
     } catch {
       return this.respond({ id: this.nextId++, ok: false, error: "invalid JSON" });
     }
-
+    if (typeof parsed !== "object" || parsed === null) {
+      return this.respond({ id: this.nextId++, ok: false, error: "invalid request" });
+    }
+    const request = parsed as Partial<RpcRequest>;
     const id = typeof request.id === "number" ? request.id : this.nextId++;
+    if (typeof request.method !== "string") {
+      return this.respond({ id, ok: false, error: "invalid method" });
+    }
+
     const handler = this.handlers.get(request.method);
     if (handler === undefined) {
       return this.respond({ id, ok: false, error: `unknown method: ${request.method}` });
@@ -81,25 +98,65 @@ export class RpcClient {
 
   constructor(private readonly transport: RpcTransport) {}
 
-  /** Send a request and resolve once the matching response arrives. */
-  call<T = unknown>(method: string, req: unknown): Promise<T> {
+  /**
+   * Send a request and resolve once the matching response arrives. When
+   * `timeoutMs` is given, the call rejects with a timeout error instead of
+   * waiting forever; a synchronous `transport.send` throw also rejects the
+   * call and leaves no pending entry behind.
+   */
+  call<T = unknown>(method: string, req: unknown, timeoutMs?: number): Promise<T> {
     const id = this.nextId++;
     const raw = JSON.stringify({ id, method, req } satisfies RpcRequest);
     return new Promise<T>((resolve, reject) => {
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      const clearTimer = (): void => {
+        if (timer !== undefined) {
+          clearTimeout(timer);
+        }
+      };
       this.pending.set(id, {
-        resolve: resolve as (res: unknown) => void,
-        reject,
+        resolve: (res: unknown) => {
+          clearTimer();
+          resolve(res as T);
+        },
+        reject: (err: Error) => {
+          clearTimer();
+          reject(err);
+        },
       });
-      this.transport.send(raw);
+      try {
+        this.transport.send(raw);
+      } catch (err) {
+        this.pending.delete(id);
+        reject(err instanceof Error ? err : new Error(String(err)));
+        return;
+      }
+      if (timeoutMs !== undefined) {
+        timer = setTimeout(() => {
+          if (this.pending.delete(id)) {
+            reject(new Error(`RPC call "${method}" timed out after ${timeoutMs}ms`));
+          }
+        }, timeoutMs);
+      }
     });
   }
 
-  /** Deliver a raw response (typically called by the transport). */
+  /**
+   * Deliver a raw response (typically called by the transport). Malformed
+   * payloads and responses with unknown ids are ignored.
+   */
   handleResponse(raw: string): void {
-    let response: RpcResponse;
+    let parsed: unknown;
     try {
-      response = JSON.parse(raw) as RpcResponse;
+      parsed = JSON.parse(raw);
     } catch {
+      return;
+    }
+    if (typeof parsed !== "object" || parsed === null) {
+      return;
+    }
+    const response = parsed as ParsedResponse;
+    if (response.id === undefined) {
       return;
     }
     const entry = this.pending.get(response.id);

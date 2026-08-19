@@ -1,9 +1,9 @@
 {
-  "name": "redspacem-docs",
+  "name": "redspace-docs",
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "RedSpaceM SDK documentation site, powered by Vocs.",
+  "description": "RedSpace SDK documentation site, powered by Vocs.",
   "scripts": {
     "dev": "vocs dev",
     "build": "bun run index:search && vocs build",
