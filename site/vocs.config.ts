@@ -10,12 +10,12 @@ export default defineConfig({
   renderStrategy: "full-static",
   colorScheme: "dark",
   accentColor: "oklch(0.72 0.26 358)",
-  logoUrl: "/logo.svg",
-  iconUrl: "/logo.svg",
+  logoUrl: "/docs/logo.svg",
+  iconUrl: "/docs/logo.svg",
   head: {
     script: [
-      { src: "/search.js", defer: true },
-      { src: "/footer.js", defer: true },
+      { src: "/docs/search.js", defer: true },
+      { src: "/docs/footer.js", defer: true },
     ],
     link: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -28,7 +28,7 @@ export default defineConfig({
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@500;700;900&display=swap",
       },
-      { rel: "stylesheet", href: "/styles.css" },
+      { rel: "stylesheet", href: "/docs/styles.css" },
     ],
     meta: [
       {
