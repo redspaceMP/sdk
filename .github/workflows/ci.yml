@@ -15,8 +15,6 @@ env:
 jobs:
   rust:
     name: Rust (fmt, clippy, test)
-    # The SDK repo mirror has no Cargo workspace; only run Rust jobs when it does.
-    if: hashFiles('Cargo.toml') != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,13 +25,17 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
+      # The SDK repo mirror has no Cargo workspace; skip Rust steps there.
       - name: fmt
+        if: hashFiles('Cargo.toml') != ''
         run: cargo fmt --all -- --check
 
       - name: clippy
+        if: hashFiles('Cargo.toml') != ''
         run: cargo clippy --workspace --all-targets -- -D warnings
 
       - name: test
+        if: hashFiles('Cargo.toml') != ''
         run: cargo test
 
   ts:
