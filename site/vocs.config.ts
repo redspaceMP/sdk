@@ -6,6 +6,7 @@ export default defineConfig({
   description:
     "The official TypeScript SDK for RedSpace — build multiplayer gamemodes for Cyberpunk 2077 roleplay servers.",
   baseUrl: "https://redspace.online",
+  basePath: "/docs",
   renderStrategy: "full-static",
   colorScheme: "dark",
   accentColor: "oklch(0.72 0.26 358)",
@@ -25,7 +26,7 @@ export default defineConfig({
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@500;700;900&display=swap",
       },
       { rel: "stylesheet", href: "/styles.css" },
     ],

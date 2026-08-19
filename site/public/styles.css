@@ -10,6 +10,7 @@
     "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Inter", sans-serif;
   --vocs-font-family-mono:
     "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --rs-font-display: "Orbitron", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 
   /* Cool-tinted near-black scale (Night City) ----------------------------- */
   --vocs-color-gray1: oklch(0.138 0.012 258);
@@ -60,12 +61,13 @@ body {
 }
 
 * {
-  scrollbar-color: oklch(0.34 0.022 258) transparent;
+  scrollbar-color: oklch(0.42 0.07 225) transparent;
 }
 
 :focus-visible {
   outline: 2px solid var(--rs-cyan);
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--rs-focus-ring);
 }
 
 /* Links ---------------------------------------------------------------------- */
@@ -106,10 +108,30 @@ body {
 [data-v-gutter-top] {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid oklch(0.3 0.022 258 / 0.8);
+  background: oklch(0.1 0.012 258 / 0.72);
 }
 
 [data-v-gutter-top] a[data-active] {
   color: var(--rs-cyan);
+}
+
+[data-v-gutter-top]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--rs-pink) 20%,
+    oklch(0.78 0.16 310) 50%,
+    var(--rs-cyan) 80%,
+    transparent
+  );
+  opacity: 0.45;
+  pointer-events: none;
 }
 
 /* Sidebar --------------------------------------------------------------------- */
@@ -230,15 +252,36 @@ body {
   backdrop-filter: blur(12px);
 }
 
+.rs-nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--rs-pink) 20%,
+    oklch(0.78 0.16 310) 50%,
+    var(--rs-cyan) 80%,
+    transparent
+  );
+  opacity: 0.45;
+  pointer-events: none;
+}
+
 .rs-nav-brand {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  font-size: 1.05rem;
+  font-family: var(--rs-font-display);
+  font-size: 1.02rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.08em;
   color: var(--vocs-text-color-heading);
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .rs-nav-brand img {
@@ -256,6 +299,9 @@ body {
 .rs-nav-links a {
   color: var(--vocs-text-color-secondary);
   text-decoration: none;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   transition: color 0.15s ease;
 }
 
@@ -343,10 +389,11 @@ body {
 
 .rs-hero-title {
   margin: 0;
+  font-family: var(--rs-font-display);
   font-size: clamp(46px, 7vw, 84px);
   font-weight: 700;
   line-height: 0.98;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.02em;
   color: var(--vocs-text-color-heading);
 }
 
@@ -535,16 +582,18 @@ body {
   display: block;
   margin-bottom: 0.75rem;
   color: var(--rs-cyan);
+  font-family: var(--rs-font-display);
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .rs-section-head h2 {
   margin: 0;
+  font-family: var(--rs-font-display);
   font-size: clamp(1.9rem, 3.4vw, 2.6rem);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
 }
 
 .rs-section-head p {
@@ -601,6 +650,14 @@ body {
 
 .rs-feature:hover::after {
   opacity: 1;
+}
+
+.rs-feature:hover .rs-feature-icon {
+  border-color: var(--rs-cyan);
+  color: var(--rs-cyan);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.08),
+    0 0 18px oklch(0.78 0.14 225 / 0.35);
 }
 
 .rs-feature-icon {
