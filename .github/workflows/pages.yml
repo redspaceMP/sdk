@@ -41,6 +41,9 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: build
+    # GitHub Pages is only enabled on the public sdk repo; the private server
+    # repo builds the artifact but has no Pages site to deploy to.
+    if: github.repository == 'redspaceMP/sdk'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
